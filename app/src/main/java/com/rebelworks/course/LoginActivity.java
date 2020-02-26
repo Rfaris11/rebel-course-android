@@ -45,7 +45,7 @@ public class LoginActivity extends AppCompatActivity {
                 username = Objects.requireNonNull(etUsername.getText()).toString().trim();
                 password = Objects.requireNonNull(etPassword.getText()).toString().trim();
 
-                if (isFieldsValid()) return;
+                if (!isFieldsValid()) return;
 
                 Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
                 intent.putExtra("username_key", username);
