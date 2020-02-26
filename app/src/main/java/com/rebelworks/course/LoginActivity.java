@@ -62,6 +62,7 @@ public class LoginActivity extends AppCompatActivity {
                     return false;
                 } else if (username.contains(" ")) {
                     tilUsername.setError("Username tidak boleh menggunakan spasi");
+                    return false;
                 }
                 tilUsername.setError(null);
                 tilPassword.setError(null);
