@@ -51,7 +51,7 @@
         app:layout_constraintTop_toBottomOf="@+id/tv_welcome">
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/ti_email"
+            android:id="@+id/til_username"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
@@ -69,13 +69,13 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/ti_password"
+            android:id="@+id/til_password"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/ti_email">
+            app:layout_constraintTop_toBottomOf="@id/til_username">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/et_password"
@@ -90,9 +90,9 @@
             android:layout_height="wrap_content"
             android:text="Forgot Password"
             android:textColor="@color/black"
-            app:layout_constraintTop_toTopOf="@id/ti_password"
-            app:layout_constraintBottom_toBottomOf="@id/ti_password"
-            app:layout_constraintRight_toRightOf="@id/ti_password"/>
+            app:layout_constraintTop_toTopOf="@id/til_password"
+            app:layout_constraintBottom_toBottomOf="@id/til_password"
+            app:layout_constraintRight_toRightOf="@id/til_password"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
