@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">Movie Night Rebel</string>
     <string name="paragraf1">Hai Dunia Apa kabarmu ?</string>
+    <string name="hello_again_n_welcome_back">Hello again.   Welcome back.</string>
 </resources>
