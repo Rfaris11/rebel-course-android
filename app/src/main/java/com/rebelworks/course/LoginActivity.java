@@ -2,10 +2,8 @@ package com.rebelworks.course;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -19,7 +17,7 @@ public class LoginActivity extends AppCompatActivity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState );
-        setContentView(R.layout.login_activity);
+        setContentView(R.layout.home_activity);
 
         etUsername = findViewById(R.id.et_username);
         etPassword = findViewById(R.id.et_password);
@@ -38,7 +36,7 @@ public class LoginActivity extends AppCompatActivity {
                 username = etUsername.getText().toString().trim();
                 password = etPassword.getText().toString().trim();
 
-                Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
                 intent.putExtra("username_key", username);
                 intent.putExtra("password_key", password);
                 startActivity(intent);
