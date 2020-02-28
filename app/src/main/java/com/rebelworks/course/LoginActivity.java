@@ -71,6 +71,7 @@ public class LoginActivity extends AppCompatActivity {
                 ServiceAPI.service().requestLogin(loginRequest).enqueue(new Callback<ResponseBody>() {
                     @Override
                     public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                        buttonAndLoadingState(false);
                         try {
                             if (response.isSuccessful() && response.body() != null) {
                                 String json = response.body().string();
@@ -91,8 +92,6 @@ public class LoginActivity extends AppCompatActivity {
                         } catch (Exception e) {
                             e.printStackTrace();
                         }
-
-                        buttonAndLoadingState(false);
                     }
 
                     @Override
