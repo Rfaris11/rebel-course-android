@@ -15,7 +15,7 @@ public class SplashScreenActivity extends AppCompatActivity {
      * 2. Localization Value Strings, Colors, Styles
      * 3. Learn Setup Third Party Library
      * 4. Learn Import Asset & XML (Custom View)
-     * */
+     */
 
     private static final long DELAYED_TIME = TimeUnit.SECONDS.toMillis(2);
 
@@ -27,13 +27,10 @@ public class SplashScreenActivity extends AppCompatActivity {
     }
 
     private void init() {
-        new Handler().postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                Intent intent = new Intent(SplashScreenActivity.this, LoginActivity.class);
-                startActivity(intent);
-                finish();
-            }
+        new Handler().postDelayed(() -> {
+            Intent intent = new Intent(SplashScreenActivity.this, LoginActivity.class);
+            startActivity(intent);
+            finish();
         }, DELAYED_TIME);
     }
 }
