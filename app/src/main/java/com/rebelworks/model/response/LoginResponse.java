@@ -4,60 +4,70 @@ import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
 
-public class LoginResponse{
+public class LoginResponse {
 
-	@SerializedName("msg")
-	private String msg;
+    @SerializedName("code")
+    private int code;
+    @SerializedName("msg")
+    private String msg;
+    @SerializedName("data")
+    private DataItem data;
+    @SerializedName("messages")
+    private List<?> messages;
 
-	@SerializedName("code")
-	private int code;
+    public int getCode() {
+        return code;
+    }
 
-	@SerializedName("data")
-	private Data data;
+    public void setCode(int code) {
+        this.code = code;
+    }
 
-	@SerializedName("messages")
-	private List<Object> messages;
+    public String getMsg() {
+        return msg;
+    }
 
-	public void setMsg(String msg){
-		this.msg = msg;
-	}
+    public void setMsg(String msg) {
+        this.msg = msg;
+    }
 
-	public String getMsg(){
-		return msg;
-	}
+    public DataItem getData() {
+        return data;
+    }
 
-	public void setCode(int code){
-		this.code = code;
-	}
+    public void setData(DataItem data) {
+        this.data = data;
+    }
 
-	public int getCode(){
-		return code;
-	}
+    public List<?> getMessages() {
+        return messages;
+    }
 
-	public void setData(Data data){
-		this.data = data;
-	}
+    public void setMessages(List<?> messages) {
+        this.messages = messages;
+    }
 
-	public Data getData(){
-		return data;
-	}
+    public static class DataItem {
 
-	public void setMessages(List<Object> messages){
-		this.messages = messages;
-	}
+        @SerializedName("prefix")
+        private String prefix;
+        @SerializedName("token")
+        private String token;
 
-	public List<Object> getMessages(){
-		return messages;
-	}
+        public String getPrefix() {
+            return prefix;
+        }
 
-	@Override
- 	public String toString(){
-		return 
-			"LoginResponse{" + 
-			"msg = '" + msg + '\'' + 
-			",code = '" + code + '\'' + 
-			",data = '" + data + '\'' + 
-			",messages = '" + messages + '\'' + 
-			"}";
-		}
+        public void setPrefix(String prefix) {
+            this.prefix = prefix;
+        }
+
+        public String getToken() {
+            return token;
+        }
+
+        public void setToken(String token) {
+            this.token = token;
+        }
+    }
 }
