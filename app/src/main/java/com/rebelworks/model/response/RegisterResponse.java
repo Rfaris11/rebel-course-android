@@ -5,14 +5,14 @@ import com.google.gson.annotations.SerializedName;
 import java.io.Serializable;
 import java.util.List;
 
-public class LoginResponse implements Serializable {
+public class RegisterResponse implements Serializable {
 
     @SerializedName("code")
     private int code;
     @SerializedName("msg")
     private String msg;
     @SerializedName("data")
-    private DataItem data;
+    private Object data;
     @SerializedName("messages")
     private List<?> messages;
 
@@ -32,11 +32,11 @@ public class LoginResponse implements Serializable {
         this.msg = msg;
     }
 
-    public DataItem getData() {
+    public Object getData() {
         return data;
     }
 
-    public void setData(DataItem data) {
+    public void setData(Object data) {
         this.data = data;
     }
 
@@ -46,29 +46,5 @@ public class LoginResponse implements Serializable {
 
     public void setMessages(List<?> messages) {
         this.messages = messages;
-    }
-
-    public static class DataItem implements Serializable {
-
-        @SerializedName("prefix")
-        private String prefix;
-        @SerializedName("token")
-        private String token;
-
-        public String getPrefix() {
-            return prefix;
-        }
-
-        public void setPrefix(String prefix) {
-            this.prefix = prefix;
-        }
-
-        public String getToken() {
-            return token;
-        }
-
-        public void setToken(String token) {
-            this.token = token;
-        }
     }
 }

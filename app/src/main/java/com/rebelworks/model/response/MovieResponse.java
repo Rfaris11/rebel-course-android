@@ -2,16 +2,17 @@ package com.rebelworks.model.response;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class MovieResponse {
+public class MovieResponse implements Serializable {
 
     @SerializedName("code")
     private int code;
     @SerializedName("msg")
     private String msg;
     @SerializedName("messages")
-    private List<?> messages;
+    private List<Object> messages;
     @SerializedName("data")
     private List<DataItem> data;
 
@@ -31,11 +32,11 @@ public class MovieResponse {
         this.msg = msg;
     }
 
-    public List<?> getMessages() {
+    public List<Object> getMessages() {
         return messages;
     }
 
-    public void setMessages(List<?> messages) {
+    public void setMessages(List<Object> messages) {
         this.messages = messages;
     }
 
@@ -47,7 +48,7 @@ public class MovieResponse {
         this.data = data;
     }
 
-    public static class DataItem {
+    public static class DataItem implements Serializable {
 
         @SerializedName("poster_path")
         private String posterPath;

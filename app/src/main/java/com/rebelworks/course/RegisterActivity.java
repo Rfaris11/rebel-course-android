@@ -6,7 +6,6 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ProgressBar;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -15,7 +14,9 @@ import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 import com.google.gson.Gson;
 import com.rebelworks.model.request.LoginRequest;
+import com.rebelworks.model.request.RegisterRequest;
 import com.rebelworks.model.response.LoginResponse;
+import com.rebelworks.model.response.RegisterResponse;
 import com.rebelworks.network.ServiceAPI;
 
 import java.util.Objects;
@@ -25,13 +26,12 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class LoginActivity extends AppCompatActivity {
+public class RegisterActivity extends AppCompatActivity {
 
     private TextInputEditText etUsername, etPassword;
     private TextInputLayout tilUsername, tilPassword;
     private Button btnLogin;
     private ProgressBar pbBar;
-    private TextView tvRegister;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -44,28 +44,16 @@ public class LoginActivity extends AppCompatActivity {
         etPassword = findViewById(R.id.et_password);
         tilPassword = findViewById(R.id.til_password);
 
-        tvRegister = findViewById(R.id.tvRegister);
-
         pbBar = findViewById(R.id.pb_bar);
         pbBar.setVisibility(View.GONE);
 
         btnLogin = findViewById(R.id.btn_login);
+        btnLogin.setText("Register");
 
-        openRegister();
-        requestLogin();
+        requestRegister();
     }
 
-    private void openRegister() {
-        tvRegister.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(v.getContext(), RegisterActivity.class);
-                startActivity(intent);
-            }
-        });
-    }
-
-    private void requestLogin() {
+    private void requestRegister() {
         btnLogin.setOnClickListener(new View.OnClickListener() {
 
             private String username = "";
@@ -79,31 +67,31 @@ public class LoginActivity extends AppCompatActivity {
 
                 if (!isFieldsValid()) return;
 
-                LoginRequest loginRequest = new LoginRequest();
-                loginRequest.setUsername(username);
-                loginRequest.setPassword(password);
+                RegisterRequest registerRequest = new RegisterRequest();
+                registerRequest.setUsername(username);
+                registerRequest.setPassword(password);
 
                 buttonAndLoadingState(true);
-                ServiceAPI.service().requestLogin(loginRequest).enqueue(new Callback<ResponseBody>() {
+                ServiceAPI.service().requestRegister(registerRequest).enqueue(new Callback<ResponseBody>() {
                     @Override
                     public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
                         buttonAndLoadingState(false);
                         try {
                             if (response.isSuccessful() && response.body() != null) {
                                 String json = response.body().string();
-                                LoginResponse loginResponse = new Gson().fromJson(json, LoginResponse.class);
+                                RegisterResponse registerResponse = new Gson().fromJson(json, RegisterResponse.class);
 
-                                if (loginResponse.getCode() != 0) {
-                                    Toast.makeText(LoginActivity.this, loginResponse.getMsg(), Toast.LENGTH_SHORT).show();
+                                if (registerResponse.getCode() != 0) {
+                                    Toast.makeText(RegisterActivity.this, registerResponse.getMsg(), Toast.LENGTH_SHORT).show();
                                     return;
                                 }
 
                                 Log.i("onResponse", "Berhasil");
-                                Toast.makeText(LoginActivity.this, loginResponse.getData().getToken(), Toast.LENGTH_SHORT).show();
+                                Toast.makeText(RegisterActivity.this, registerResponse.getMsg(), Toast.LENGTH_SHORT).show();
 
-                                Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
-                                intent.putExtra("login_response", loginResponse);
+                                Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
                                 startActivity(intent);
+                                finishAffinity();
                             }
                         } catch (Exception e) {
                             e.printStackTrace();

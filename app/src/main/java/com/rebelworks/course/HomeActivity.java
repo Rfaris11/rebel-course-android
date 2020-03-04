@@ -5,6 +5,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.TextView;
 
+import com.rebelworks.model.response.LoginResponse;
+
 public class HomeActivity extends AppCompatActivity {
 
     private TextView tvWelcome;
@@ -20,9 +22,9 @@ public class HomeActivity extends AppCompatActivity {
 
     private void initData() {
         if (getIntent() != null) {
-            String username = getIntent().getStringExtra("username_key");
+            LoginResponse loginResponse = (LoginResponse) getIntent().getSerializableExtra("login_response");
             String password = getIntent().getStringExtra("password_key");
-            tvWelcome.setText("Welcome mother " + username + " " + password);
+            tvWelcome.setText("Your token " + loginResponse.getData().getToken() + " " + password);
         }
     }
 }
