@@ -26,12 +26,13 @@
 
     <TextView
         android:id="@+id/tv_welcome"
-        android:layout_width="100dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
         android:gravity="center"
-        android:text="@string/hello_again_n_welcome_back"
+        android:text="@string/register_message"
         android:textColor="@color/black"
+        android:textStyle="bold"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@id/img_logo_login" />
@@ -82,26 +83,17 @@
                 android:inputType="textPassword" />
         </com.google.android.material.textfield.TextInputLayout>
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Forgot Password"
-            android:textColor="@color/black"
-            app:layout_constraintBottom_toBottomOf="@id/til_password"
-            app:layout_constraintRight_toRightOf="@id/til_password"
-            app:layout_constraintTop_toTopOf="@id/til_password" />
-
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <Button
-        android:id="@+id/btn_login"
+        android:id="@+id/btn_register"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:layout_marginTop="50dp"
         android:layout_marginEnd="32dp"
         android:backgroundTint="@color/pink"
-        android:text="Sign In"
+        android:text="Register"
         android:textAllCaps="false"
         android:textColor="@color/white"
         android:textSize="16dp"
@@ -128,20 +120,20 @@
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_login">
+        app:layout_constraintTop_toBottomOf="@+id/btn_register">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="New to Friendly Desi?"
+            android:text="Already Have Account?"
             android:textSize="14dp" />
 
         <TextView
-            android:id="@+id/tvRegister"
+            android:id="@+id/tvSignin"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
-            android:text="Sign up"
+            android:text="Sign in"
             android:textColor="@color/pink"
             android:textSize="14dp" />
 

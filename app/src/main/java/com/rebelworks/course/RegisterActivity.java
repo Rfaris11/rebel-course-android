@@ -6,6 +6,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -13,9 +14,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 import com.google.gson.Gson;
-import com.rebelworks.model.request.LoginRequest;
 import com.rebelworks.model.request.RegisterRequest;
-import com.rebelworks.model.response.LoginResponse;
 import com.rebelworks.model.response.RegisterResponse;
 import com.rebelworks.network.ServiceAPI;
 
@@ -30,13 +29,14 @@ public class RegisterActivity extends AppCompatActivity {
 
     private TextInputEditText etUsername, etPassword;
     private TextInputLayout tilUsername, tilPassword;
-    private Button btnLogin;
+    private Button btnRegister;
     private ProgressBar pbBar;
+    private TextView tvSignin;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.login_activity);
+        setContentView(R.layout.register_activity);
 
         etUsername = findViewById(R.id.et_username);
         tilUsername = findViewById(R.id.til_username);
@@ -44,17 +44,28 @@ public class RegisterActivity extends AppCompatActivity {
         etPassword = findViewById(R.id.et_password);
         tilPassword = findViewById(R.id.til_password);
 
+        tvSignin = findViewById(R.id.tvSignin);
+
         pbBar = findViewById(R.id.pb_bar);
         pbBar.setVisibility(View.GONE);
 
-        btnLogin = findViewById(R.id.btn_login);
-        btnLogin.setText("Register");
+        btnRegister = findViewById(R.id.btn_register);
 
+        openLogin();
         requestRegister();
     }
 
+    private void openLogin() {
+        tvSignin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+    }
+
     private void requestRegister() {
-        btnLogin.setOnClickListener(new View.OnClickListener() {
+        btnRegister.setOnClickListener(new View.OnClickListener() {
 
             private String username = "";
             private String password = "";
@@ -127,11 +138,11 @@ public class RegisterActivity extends AppCompatActivity {
     private void buttonAndLoadingState(boolean isLoading){
         if (isLoading) {
             pbBar.setVisibility(View.VISIBLE);
-            btnLogin.setVisibility(View.INVISIBLE);
+            btnRegister.setVisibility(View.INVISIBLE);
             return;
         }
 
         pbBar.setVisibility(View.INVISIBLE);
-        btnLogin.setVisibility(View.VISIBLE);
+        btnRegister.setVisibility(View.VISIBLE);
     }
 }
