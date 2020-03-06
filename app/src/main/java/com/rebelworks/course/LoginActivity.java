@@ -1,6 +1,8 @@
 package com.rebelworks.course;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -14,6 +16,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 import com.google.gson.Gson;
+import com.rebelworks.helper.SessionManager;
 import com.rebelworks.model.request.LoginRequest;
 import com.rebelworks.model.response.LoginResponse;
 import com.rebelworks.network.ServiceAPI;
@@ -37,7 +40,6 @@ public class LoginActivity extends AppCompatActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login_activity);
-
         etUsername = findViewById(R.id.et_username);
         tilUsername = findViewById(R.id.til_username);
 
@@ -76,6 +78,9 @@ public class LoginActivity extends AppCompatActivity {
 
                 username = Objects.requireNonNull(etUsername.getText()).toString().trim();
                 password = Objects.requireNonNull(etPassword.getText()).toString().trim();
+
+                // Simpan username ke pref
+                SessionManager.putString(LoginActivity.this, "username", username);
 
                 if (!isFieldsValid()) return;
 
