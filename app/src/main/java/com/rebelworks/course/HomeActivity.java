@@ -11,7 +11,6 @@ import com.rebelworks.model.response.LoginResponse;
 
 public class HomeActivity extends AppCompatActivity {
 
-    private TextView tvWelcome;
     private String username;
 
     @Override
@@ -19,9 +18,6 @@ public class HomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
         username = SessionManager.getString(HomeActivity.this,"username");
-
-
-        tvWelcome = findViewById(R.id.tv_welcome);
         initData();
     }
 
@@ -29,11 +25,10 @@ public class HomeActivity extends AppCompatActivity {
         if (getIntent() != null) {
             LoginResponse loginResponse = (LoginResponse) getIntent().getSerializableExtra("login_response");
             String password = getIntent().getStringExtra("password_key");
-            tvWelcome.setText("Your token " + loginResponse.getData().getToken() + " " + password);
+            // tvWelcome.setText("Your token " + loginResponse.getData().getToken() + " " + password);
             SessionManager.putString(HomeActivity.this, "token", "Bearer " + loginResponse.getData().getToken());
 
         }
-        tvWelcome.setText(username);
 
     }
 

@@ -1,104 +1,62 @@
 package com.rebelworks.model.response;
 
+import java.util.List;
 import com.google.gson.annotations.SerializedName;
 
-import java.io.Serializable;
-import java.util.List;
+public class MovieResponse{
 
-public class MovieResponse implements Serializable {
+	@SerializedName("msg")
+	private String msg;
 
-    @SerializedName("code")
-    private int code;
-    @SerializedName("msg")
-    private String msg;
-    @SerializedName("messages")
-    private List<Object> messages;
-    @SerializedName("data")
-    private List<DataItem> data;
+	@SerializedName("code")
+	private int code;
 
-    public int getCode() {
-        return code;
-    }
+	@SerializedName("data")
+	private List<DataItem> data;
 
-    public void setCode(int code) {
-        this.code = code;
-    }
+	@SerializedName("messages")
+	private List<Object> messages;
 
-    public String getMsg() {
-        return msg;
-    }
+	public void setMsg(String msg){
+		this.msg = msg;
+	}
 
-    public void setMsg(String msg) {
-        this.msg = msg;
-    }
+	public String getMsg(){
+		return msg;
+	}
 
-    public List<Object> getMessages() {
-        return messages;
-    }
+	public void setCode(int code){
+		this.code = code;
+	}
 
-    public void setMessages(List<Object> messages) {
-        this.messages = messages;
-    }
+	public int getCode(){
+		return code;
+	}
 
-    public List<DataItem> getData() {
-        return data;
-    }
+	public void setData(List<DataItem> data){
+		this.data = data;
+	}
 
-    public void setData(List<DataItem> data) {
-        this.data = data;
-    }
+	public List<DataItem> getData(){
+		return data;
+	}
 
-    public static class DataItem implements Serializable {
+	public void setMessages(List<Object> messages){
+		this.messages = messages;
+	}
 
-        @SerializedName("poster_path")
-        private String posterPath;
-        @SerializedName("original_title")
-        private String originalTitle;
-        @SerializedName("overview")
-        private String overview;
-        @SerializedName("release_date")
-        private String releaseDate;
-        @SerializedName("vote_average")
-        private double voteAverage;
+	public List<Object> getMessages(){
+		return messages;
+	}
 
-        public String getPosterPath() {
-            return posterPath;
-        }
-
-        public void setPosterPath(String posterPath) {
-            this.posterPath = posterPath;
-        }
-
-        public String getOriginalTitle() {
-            return originalTitle;
-        }
-
-        public void setOriginalTitle(String originalTitle) {
-            this.originalTitle = originalTitle;
-        }
-
-        public String getOverview() {
-            return overview;
-        }
-
-        public void setOverview(String overview) {
-            this.overview = overview;
-        }
-
-        public String getReleaseDate() {
-            return releaseDate;
-        }
-
-        public void setReleaseDate(String releaseDate) {
-            this.releaseDate = releaseDate;
-        }
-
-        public double getVoteAverage() {
-            return voteAverage;
-        }
-
-        public void setVoteAverage(double voteAverage) {
-            this.voteAverage = voteAverage;
-        }
-    }
+	@Override
+ 	public String toString(){
+		return 
+			"MovieResponse{" + 
+			"msg = '" + msg + '\'' + 
+			",code = '" + code + '\'' + 
+			",data = '" + data + '\'' + 
+			",messages = '" + messages + '\'' + 
+			"}";
+		}
 }
